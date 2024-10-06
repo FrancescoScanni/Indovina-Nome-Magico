@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indovina Numero Magico</title>
+</head>
+<body>
+    
+    <!--     ...     -->
+
+
+
+    <script type="text/javascript">
+
+
+    //FUNZIONI
+
+    //versione di generazione n°1
+
+        let casualNumber=0
+        function generateRandomInteger(min, max) {
+            casualNumber = Math.random()
+            casualNumber = casualNumber * max
+            casualNumber = parseInt(casualNumber)
+            return casualNumber
+        }
+
+        function sanitize(n){
+            while(n===null || isNaN(n)){
+                n=prompt("Inserisci necessariamente un numero. ")
+            }
+            return n.trim
+        }
+        
+
+
+        casualNumber=generateRandomInteger(0,100)   //chiamo la funzione di generazione del numero casuale mettendo come parametri i valori di massimo e di minimo
+
+        let giusto=false
+
+
+        for(let i=0;i<5 && giusto===false;i++){   //condizione di ripetitibilità dei tentativi 
+
+            let answer=prompt("Fai un tentativo, inserisci il numero (compreso fra 0 e 100). Hai "+(5-i)+" tentativi rimanenti. "+casualNumber)
+            
+
+            sanitize(answer)   //richiamo la funzione di controllo dell'imput dell'utente
+            answer=parseInt(answer)  //trasformo la risposta in intero per le selezioni seguenti
+
+
+
+            //condizioni di uguaglianza/disuguaglianza del numero 
+
+            if(answer===casualNumber){    //numero uguale (indovinato)
+                console.log("Bravo, hai indovinato al "+(i+1)+"° tentativo. ")
+                giusto=true
+            }
+            else{
+                if(answer>casualNumber){   //numero maggiore
+                    console.log("Valore troppo grande. Hai "+(5-i)+" tentativi rimanenti. ")
+                }
+                else{      //numero minore
+                    console.log("Valore troppo piccolo. Hai "+(5-i)+" tentativi rimanenti. ")
+                }
+            }
+        }
+
+        //messaggio conclusivo
+        if(giusto===false){
+            console.log("Tentativi esauriti, non sei riuscito ad indovinare il numero. ")
+        }
+        else{
+            console.log("Gioco completato. ")
+        }
+    
+    </script>
+</body>
+</html>
