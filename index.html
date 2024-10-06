@@ -7,6 +7,7 @@
 </head>
 <body>
     
+
     <!--     ...     -->
 
 
@@ -19,13 +20,31 @@
     //versione di generazione n°1
 
         let casualNumber=0
-        function generateRandomInteger(min, max) {
+        function generateRandomInteger(min, max) {   //applico i parametri 0 e 100 (qui 1 è escluso)
             casualNumber = Math.random()
-            casualNumber = casualNumber * max
-            casualNumber = parseInt(casualNumber)
+            while(casualNumber===0){    //controllo che il valore del numero escludendo lo 0 dai possibili risultati
+                casualNumber = Math.random()
+            }
+            casualNumber = casualNumber * max   //moltiplichiamo per max in modo da ottenere il valore generato compreso fra 0 e 100
+            casualNumber = parseInt(casualNumber)   ///trasformo il numero (stringa) in intero
             return casualNumber
         }
 
+
+    //versione di generazione n°2
+
+/*
+        let casualNumber=0
+        function generateRandomInteger(min, max) {
+            casualNumber = Math.random()
+            while(casualNumber===0){    //controllo che il valore del numero escludendo lo 0 dai possibili risultati
+                casualNumber = Math.random()
+            }
+            casualNumber = casualNumber * (max-min)+ min  //così facendo, in base all'intervallo di valori che vogliamo generare, motliplichiamo quest'ultimo per il numero generato, infine sommiamo il minimo per farlo rientrare nell'intervallo desiderato
+            casualNumber = parseInt(casualNumber)
+            return casualNumber
+        }
+*/      
         function sanitize(n){
             while(n===null || isNaN(n)){
                 n=prompt("Inserisci necessariamente un numero. ")
@@ -42,7 +61,7 @@
 
         for(let i=0;i<5 && giusto===false;i++){   //condizione di ripetitibilità dei tentativi 
 
-            let answer=prompt("Fai un tentativo, inserisci il numero (compreso fra 0 e 100). Hai "+(5-i)+" tentativi rimanenti. ")
+            let answer=prompt("Fai un tentativo, inserisci il numero (compreso fra 0 e 100). Hai "+(5-i)+" tentativi rimanenti. "+casualNumber)
             
 
             sanitize(answer)   //richiamo la funzione di controllo dell'imput dell'utente
