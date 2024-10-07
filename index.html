@@ -6,7 +6,19 @@
     <title>Indovina Numero Magico</title>
 </head>
 <body>
-    
+
+
+    <h1>Guess the Number</h1>
+
+    <p>Ho generato un numero...prova ad indovinarlo
+        <br>
+        Hai ancora 5 tentativi
+    </p>
+
+    <form action="" method="get">
+        <input id="prova" type="number" name="user_guess" value="200">
+        <input id="button" type="button" name="guess" value="Indovina">
+    </form>
 
 
 
@@ -15,6 +27,25 @@
 
 
     <script type="text/javascript">
+
+    //1.  dichiaro una variabile e con un queryselector memorizzo il button
+    //2.  dichiaro un EVENT LISTENER sul button
+
+    let button =document.querySelector("#button")  //la funzione QUERYSELECTOR ci permette di prendere un elemento html e, tramite un SELETTORE CSS, operare nello script su una variabile
+
+
+    button.addEventListener("click",function(event){   //"ascoltando gli eventi" al click eseguo la funzione
+        console.log(event)  //funzione eseguita solo dopo che l'utente clicca su Button
+        //1. prendo l'elemento html di cui l'utente ha scritto il numero
+        //2. trasformo in intero il numero
+        //3. controllo i valori
+        //4. scrivo i risultati in console
+    })
+
+    let risp=document.querySelector("#prova").value
+    console.log(risp)
+    risp=parseInt(risp)
+    
 
 
     //FUNZIONI
@@ -28,11 +59,16 @@
             casualNumber = parseInt(casualNumber)   ///trasformo il numero (stringa) in intero
             return casualNumber
         }
+/*
+
+
+
+
 
 
     //versione di generazione n°2
 
-/*
+
         let casualNumber=0
         function generateRandomInteger(min, max) {
             casualNumber = Math.random()
@@ -40,7 +76,7 @@
             casualNumber = parseInt(casualNumber)
             return casualNumber
         }
-*/    
+   
         function sanitize(n){
             while(n===null || isNaN(n) || n===""){   
                 n=prompt("Inserire necessariamente un numero. ")
@@ -89,7 +125,7 @@
         else{
             console.log("Gioco completato. ")
         }
-    
+    */
     </script>
 </body>
 </html>
